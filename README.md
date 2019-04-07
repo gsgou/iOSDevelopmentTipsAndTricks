@@ -1,7 +1,13 @@
 # iOS Development Tips & Tricks
 
 ## Use Simulator in full-screen mode with your IDE and more ...
-If you want to explore secret features in Simulator you should enable Apple hidden Internals menu. To do so you need to create an empty folder with name “AppleInternal” in the root directory.
+
+To enable the fullscreen mode in Simulator, just open up Terminal app and run the following command:
+```shell
+defaults write com.apple.iphonesimulator AllowFullscreenMode -bool YES
+```
+
+If you want to explore secret features in XCode 9 Simulator you should enable Apple hidden Internals menu. To do so you need to create an empty folder with name “AppleInternal” in the root directory.
 
 ![](Images/AppleInternal.png)
 
@@ -10,10 +16,14 @@ If you want to explore secret features in Simulator you should enable Apple hidd
 - Immediately hold down the Command and R keys until you see an Apple logo. Eventually your Mac will show the Recovery Mode Utilities window.
 - Click on Utilities in the menu bar, then click on Terminal and execute:
 ```shell
+csrutil disable
 mount -uw /Volumes/Macintosh\ HD
 cd /Volumes/Macintosh\ HD
 mkdir ./AppleInternal
+csrutil enable
 ```
+
+The changes you make in Xcode 9 Simulator should be also reflected in Xcode 10 Simulator even if it does not show the Internal menu.
 
 ## Capture iOS Simulator video
 ```shell
